@@ -1,0 +1,28 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  updateProfile(input: UpdateProfileInput!): UserModel!
+}
+
+type Query {
+  hello: String!
+  me: UserModel!
+}
+
+type Subscription {
+  userUpdated: UserModel!
+}
+
+input UpdateProfileInput {
+  image: String
+  name: String
+}
+
+type UserModel {
+  email: String!
+  id: ID!
+  image: String
+  name: String!
+}

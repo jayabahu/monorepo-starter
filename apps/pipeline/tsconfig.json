@@ -1,0 +1,8 @@
+{
+  "extends": "@myapp/typescript-config/lambda.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts"]
+}

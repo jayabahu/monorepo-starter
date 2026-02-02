@@ -1,0 +1,6 @@
+environment        = "dev"
+aws_region         = "us-east-1"
+rds_instance_class = "db.t4g.micro"
+redis_node_type    = "cache.t4g.micro"
+cors_origins       = ["http://localhost:3000"]
+certificate_arn    = ""

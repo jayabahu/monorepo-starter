@@ -1,0 +1,23 @@
+{
+  "name": "@myapp/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./base": "./base.mjs",
+    "./nestjs": "./nestjs.mjs",
+    "./nextjs": "./nextjs.mjs",
+    "./library": "./library.mjs"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint-config-prettier": "^10.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-import-x": "^4.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

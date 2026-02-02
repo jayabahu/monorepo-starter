@@ -1,0 +1,27 @@
+{
+  "name": "@myapp/pipeline",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@myapp/database": "workspace:*",
+    "@myapp/storage": "workspace:*"
+  },
+  "devDependencies": {
+    "@myapp/eslint-config": "workspace:*",
+    "@myapp/typescript-config": "workspace:*",
+    "@types/aws-lambda": "^8.10.0",
+    "@types/node": "^22.19.7",
+    "eslint": "^9.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0"
+  }
+}

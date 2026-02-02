@@ -1,0 +1,50 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Login to ECR
+        id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - name: Build and push API
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./apps/api/Dockerfile
+          push: true
+          tags: ${{ steps.ecr.outputs.registry }}/${{ vars.ECR_API_REPO }}:${{ github.sha }}
+      - name: Build and push Dashboard
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./apps/dashboard/Dockerfile
+          push: true
+          tags: ${{ steps.ecr.outputs.registry }}/${{ vars.ECR_DASHBOARD_REPO }}:${{ github.sha }}
+      - name: Deploy API to ECS
+        run: |
+          aws ecs update-service \
+            --cluster ${{ vars.ECS_CLUSTER }} \
+            --service ${{ vars.ECS_API_SERVICE }} \
+            --force-new-deployment
+      - name: Deploy Dashboard to ECS
+        run: |
+          aws ecs update-service \
+            --cluster ${{ vars.ECS_CLUSTER }} \
+            --service ${{ vars.ECS_DASHBOARD_SERVICE }} \
+            --force-new-deployment

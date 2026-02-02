@@ -1,0 +1,6 @@
+environment        = "prod"
+aws_region         = "us-east-1"
+rds_instance_class = "db.t4g.medium"
+redis_node_type    = "cache.t4g.medium"
+cors_origins       = ["https://myapp.com"]
+certificate_arn    = "arn:aws:acm:us-east-1:ACCOUNT:certificate/CERT_ID"

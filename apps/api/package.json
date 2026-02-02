@@ -1,0 +1,49 @@
+{
+  "name": "@myapp/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "nest build",
+    "dev": "node --import @swc-node/register/esm-register --watch src/main.ts",
+    "start": "node --import tsx dist/main.js",
+    "start:prod": "node dist/main.js",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.0.0",
+    "@as-integrations/express5": "^1.1.0",
+    "@myapp/auth": "workspace:*",
+    "@myapp/database": "workspace:*",
+    "@nestjs/apollo": "^13.0.0",
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.0",
+    "@nestjs/core": "^11.0.0",
+    "@nestjs/graphql": "^13.0.0",
+    "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/terminus": "^11.0.0",
+    "better-auth": "^1.4.0",
+    "drizzle-orm": "^0.45.0",
+    "graphql": "^16.0.0",
+    "graphql-ws": "^6.0.0",
+    "ioredis": "^5.4.0",
+    "reflect-metadata": "^0.2.0",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@myapp/eslint-config": "workspace:*",
+    "@myapp/typescript-config": "workspace:*",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@swc-node/register": "^1.11.1",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.11.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
